@@ -8,6 +8,9 @@ call pathogen#infect()
 " Reset Leader
 let mapleader=','
 
+" Fix backspace key
+:set backspace=indent,eol,start
+
 " Remap : to ; save infinite key strokes
 nnoremap ; :
 
@@ -20,6 +23,7 @@ if has("autocmd")
 	filetype plugin indent on
 endif
 
+" Tab formatting
 set showmatch
 set number
 set ts=2
@@ -40,13 +44,8 @@ map <c-h> <c-w>h
 set background=dark
 syntax enable
 colorscheme hybrid
-augroup vimrc_autocmds
-    autocmd!
-    " highlight characters past column 120
-    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python match Excess /\%80v.*/
-    autocmd FileType python set nowrap
-augroup END
+
+set colorcolumn=80
 
 " Addons go below Here
 " --------------------
