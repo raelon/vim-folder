@@ -21,7 +21,7 @@ def main():
 	os.symlink('bundles/snipmate/snippets', 'snippets')
 
 	# Get home dir and make me some simlinks
-	home = bash('cd ~/ && pwd')
+        home = '~/'
 	os.remove(home + '.vimrc')
 	bash('rm -rf ' + home + '.vim')
 	os.symlink('./', home + '.vim')
