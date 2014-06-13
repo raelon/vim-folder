@@ -8,6 +8,9 @@ call pathogen#infect()
 " Reset Leader
 let mapleader=','
 
+" Fix backspace key
+:set backspace=indent,eol,start
+
 " Remap : to ; save infinite key strokes
 nnoremap ; :
 
@@ -20,6 +23,7 @@ if has("autocmd")
 	filetype plugin indent on
 endif
 
+" Tab formatting
 set showmatch
 set number
 " Size of hard tabstop
