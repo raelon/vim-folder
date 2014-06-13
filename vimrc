@@ -49,13 +49,12 @@ map <c-h> <c-w>h
 set background=dark
 syntax enable
 colorscheme hybrid
-augroup vimrc_autocmds
-    autocmd!
-    " highlight characters past column 120
-    autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python match Excess /\%80v.*/
-    autocmd FileType python set nowrap
-augroup END
+" Set column color
+if exists('+colorcolumn')
+    set colorcolumn=100
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 " Addons go below Here
 " --------------------
