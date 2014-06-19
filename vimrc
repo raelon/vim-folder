@@ -27,12 +27,12 @@ endif
 set showmatch
 set number
 " Size of hard tabstop
-set tabstop=4
+set tabstop=2
 " Size on an "indent"
-set shiftwidth=4
+set shiftwidth=2
 " A combiination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
-set softtabstop=4
+set softtabstop=2
 " make "tab"  insert indents instead of tabs at the beginning of a line
 set smarttab
 " always uses spaces instead of tab characters
@@ -55,7 +55,7 @@ syntax enable
 colorscheme hybrid
 " Set column color
 if exists('+colorcolumn')
-    set colorcolumn=100
+    set colorcolumn=80
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
