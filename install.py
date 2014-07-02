@@ -16,7 +16,6 @@ bash("git submodule foreach git submodule update")
 # Place a symlink in for pathogen
 os.symlink("vim-pathogen/autoload", "autoload")
 os.symlink("vim-hybrid/colors", "colors")
-os.symlink('bundle/snipmate/snippets', 'snippets')
 
 # Get home dir and make symlinks
 home = os.getenv("HOME") + '/'
