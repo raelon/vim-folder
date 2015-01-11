@@ -3,9 +3,8 @@ import subprocess
 
 # Allows for a bash command to be passed in as a string. Its stdout is returned
 def bash(command):
-	output = subprocess.Popen([command], shell=True,
-                    stdout=subprocess.PIPE).communicate()[0]
-	return output
+    output = subprocess.Popen([command], shell=True, stdout=subprocess.PIPE).communicate()[0]
+    return output
 
 # Register all submodules
 bash("git submodule init")

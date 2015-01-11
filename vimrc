@@ -54,7 +54,7 @@ set background=dark
 syntax enable
 colorscheme hybrid
 " Set column color
-au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 " Addons go below Here
 " --------------------
