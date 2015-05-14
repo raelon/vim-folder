@@ -27,12 +27,12 @@ endif
 set showmatch
 set number
 " Size of hard tabstop
-set tabstop=2
+set tabstop=4
 " Size on an "indent"
-set shiftwidth=2
+set shiftwidth=4
 " A combiination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
-set softtabstop=2
+set softtabstop=4
 " make "tab"  insert indents instead of tabs at the beginning of a line
 set smarttab
 " always uses spaces instead of tab characters
@@ -49,6 +49,18 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 " Apperance
 set background=dark
 syntax enable
@@ -58,6 +70,7 @@ colorscheme hybrid
 
 " Addons go below Here
 " --------------------
+
 " NERDTree
 map <leader>nt :NERDTree<CR>
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -70,3 +83,18 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-c>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
+
+" Syncr
+" Copy ~/.vim/bundle/vim-syncr/.syncrconf to your root repo
+" Uncomment the following command to sync on writes
+autocmd BufWritePost * :Suplfil
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
