@@ -1,5 +1,13 @@
 Custom vim settings and plugins
 
+Install:
+    ***
+    Disclaimer.. I've nevered tried this and it could break everything and
+    create recursive symlinks.. good luck..
+    ***
+    ln -s vimrc ~/.vimrc
+    ln -s . ~/.vim
+
 Requires:
     - vim compiled with python 2
     - git is installed
