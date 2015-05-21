@@ -1,0 +1,5 @@
+Custom vim settings and plugins
+
+Requires:
+    - vim compiled with python 2
+    - git is installed
