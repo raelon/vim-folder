@@ -38,8 +38,9 @@ set t_Co=256                                        " set color scheme to 256 bi
 set title                                           " show file in titlebar
 syntax enable                                       " use syntax highlighting
 colorscheme hybrid                                  " custom color scheme
-autocmd InsertEnter * :set number                   " absolute line numbers in insert mode
+autocmd vimenter * :set relativenumber              " relative line numbers when file opend
 autocmd InsertLeave * :set relativenumber           " relative line numbers in normal mode
+autocmd InsertEnter * :set number                   " absolute line numbers in insert mode
 autocmd BufWritePost * :Suplfil                     " automatic syncr upload on writes
 autocmd vimenter * if !argc() | NERDTree | endif    " enter NERDTree directory if no file specified
 
@@ -49,7 +50,7 @@ set undodir=~/.vim/vimundo                          " save them here
 set showmatch                                       " show matching bracket
 set cursorline                                      " hightights current line
 set number                                          " show line numbers
-set scrolloff=9999                                  " keep N lines between cursor and screen edge
+set scrolloff=5                                     " keep N lines between cursor and screen edge
 set ignorecase                                      " case insensitive searching
 set smartcase                                       " case sensitive if uppercase is used
 set hlsearch                                        " highlight search results
@@ -60,6 +61,7 @@ set expandtab                                       " tabs = spaces
 set tabstop=4                                       " number of spaces tabs count for
 set shiftwidth=4                                    " spaces for auto indents
 set smarttab                                        " smart tab handling for indenting
+set smartindent
 set foldmethod=indent                               " fold the same indent level
 set foldlevel=99                                    " fold all the way
 set statusline+=%#warningmsg#                       " syntastic recommended
