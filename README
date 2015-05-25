@@ -8,6 +8,8 @@ Install:
     ln -s vimrc ~/.vimrc
     ln -s . ~/.vim
 
+    :PluginInstall (inside of vim)
+
 Requires:
     - vim compiled with python 2
     - git is installed

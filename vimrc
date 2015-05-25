@@ -2,7 +2,7 @@
 set nocompatible                                    " make uncompatible with vi becuase this is vim goddamnit
 filetype off                                        " required by vundle
 filetype plugin indent on                           " required by vundle
-set rtp+=~/.vim/bundle/vundle/                      " add vundle to run time path
+set rtp+=~/.vim/bundle/Vundle.vim/                      " add vundle to run time path
 call vundle#rc()                                    " required by vundle
 
 Plugin 'gmarik/Vundle.vim'                          " let vundle manage vundle; required
