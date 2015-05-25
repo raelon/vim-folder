@@ -1,15 +1,13 @@
 Custom vim settings and plugins
 
 Install:
-    ***
-    Disclaimer.. I've nevered tried this and it could break everything and
-    create recursive symlinks.. good luck..
-    ***
     ln -s vimrc ~/.vimrc
     ln -s . ~/.vim
 
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     :PluginInstall (inside of vim)
 
 Requires:
     - vim compiled with python 2
     - git is installed
+    - (optional) silversearcher-ag for speady ctrlp
