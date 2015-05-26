@@ -15,6 +15,7 @@ Plugin 'tpope/vim-surround'                         " surround
 Plugin 'w0ng/vim-hybrid'                            " vim-hybrid
 Plugin 'kchmck/vim-coffee-script'                   " vim-coffee-script
 Plugin 'digitaltoad/vim-jade'                       " vim-jade
+Plugin 'Valloric/YouCompleteMe'                     " YouCompleteMe
 
 call vundle#end()
 filetype plugin indent on

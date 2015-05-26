@@ -1,13 +1,22 @@
 Custom vim settings and plugins
 
 Install:
+    -- Link repo to filesystem --
     ln -s vimrc ~/.vimrc
     ln -s . ~/.vim
 
+    -- Install Vundle --
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+    -- Install all plugins --
     :PluginInstall (inside of vim)
+
+    -- Install YCM autocomplete (https://github.com/Valloric/YouCompleteMe) --
+    cd ~/.vim/bundle/YouCompleteME
+    ./install.sh (--clang-completer for C languages support)
 
 Requires:
     - vim compiled with python 2
     - git is installed
+    - (optionl) cmake for YCM C lanuage support
     - (optional) silversearcher-ag for speady ctrlp
