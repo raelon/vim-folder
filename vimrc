@@ -38,9 +38,8 @@ set t_Co=256                                        " set color scheme to 256 bi
 set title                                           " show file in titlebar
 syntax enable                                       " use syntax highlighting
 colorscheme hybrid                                  " custom color scheme
-autocmd vimenter * :set relativenumber              " relative line numbers when file opend
-autocmd InsertLeave * :set relativenumber           " relative line numbers in normal mode
-autocmd InsertEnter * :set number                   " absolute line numbers in insert mode
+set relativenumber                                  " enable relative line numbers
+set number                                          " hybrid mode so current line shows absolute line number
 autocmd BufWritePost * :Suplfil                     " automatic syncr upload on writes
 autocmd vimenter * if !argc() | NERDTree | endif    " enter NERDTree directory if no file specified
 
