@@ -1,7 +1,7 @@
 " Plugin Settings -----------------------------------------------------------|
 set nocompatible                                    " make uncompatible with vi because this is vim goddamnit
 filetype off                                        " required by vundle
-filetype plugin indent on                           " required by vundle
+" filetype plugin indent on                           " required by vundle
 set rtp+=~/.vim/bundle/Vundle.vim/                  " add vundle to run time path
 call vundle#rc()                                    " required by vundle
 
@@ -10,12 +10,14 @@ Plugin 'kien/ctrlp.vim'                             " ctrlp
 Plugin 'tpope/vim-fugitive'                         " fugitive
 Plugin 'scrooloose/nerdtree'                        " nerdtree
 Plugin 'scrooloose/syntastic'                       " syntastic
-Plugin 'jacob-ogre/vim-syncr'                       " syncr
+" Plugin 'jacob-ogre/vim-syncr'                     " syncr
+Plugin 'mschwager/vim-syncr'                        " less anoying syncr
 Plugin 'tpope/vim-surround'                         " surround
 Plugin 'w0ng/vim-hybrid'                            " vim-hybrid
 Plugin 'kchmck/vim-coffee-script'                   " vim-coffee-script
 Plugin 'digitaltoad/vim-jade'                       " vim-jade
 Plugin 'Valloric/YouCompleteMe'                     " YouCompleteMe
+Plugin 'sgodbold/vim-potion'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,8 +43,10 @@ syntax enable                                       " use syntax highlighting
 colorscheme hybrid                                  " custom color scheme
 set relativenumber                                  " enable relative line numbers
 set number                                          " hybrid mode so current line shows absolute line number
-autocmd BufWritePost * :Suplfil                     " automatic syncr upload on writes
-autocmd vimenter * if !argc() | NERDTree | endif    " enter NERDTree directory if no file specified
+augroup plugins
+    autocmd BufWritePost * :Suplfil                     " automatic syncr upload on writes
+    autocmd vimenter * if !argc() | NERDTree | endif    " enter NERDTree directory if no file specified
+augroup END
 
 " Editor Settings -----------------------------------------------------------|
 set undofile                                        " save undos after closing a file
@@ -72,6 +76,33 @@ let g:syntastic_auto_loc_list = 1                   " syntastic recommended
 let g:syntastic_check_on_open = 1                   " syntastic recommended
 let g:syntastic_check_on_wq = 0                     " syntastic recommended
 
+function MyTabLine()
+ let line = 'Tabs:'
+ let i = 1
+ while i <= tabpagenr('$')
+     let buflist = tabpagebuflist(i)
+     let winnr = tabpagewinnr(i)
+     let line .= '%' . i . 'T'
+     let line .= (i == tabpagenr() ? '%1*' : '%2*')
+     let line .= (' ' . i . ') %*')
+     let line .= (i == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+     let file = bufname(buflist[winnr - 1])
+     let file = fnamemodify(file, ':p:t')
+     if file == ''
+         let file = '[No Name]'
+     endif
+     let line .= file
+     let i = i + 1
+ endwhile
+ let line .= '%T%#TabLineFill#%='
+ let line .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+ return line
+endfunction
+set tabline=%!MyTabLine()
+hi TabLine ctermfg=White ctermbg=Black cterm=underline
+hi TabLineSel ctermfg=Red ctermbg=Black cterm=underline
+hi TabLineFill ctermfg=Black ctermbg=White
+
 " Keyboard Mappings ---------------------------------------------------------|
 
 " change leader to ',' instead of '\'
@@ -85,6 +116,24 @@ nnoremap ; :
 
 " Map za to space for opening and closing folds
 noremap <space> za
+
+" Map jk / kj to escape insert mode
+inoremap jk <esc>
+inoremap kj <esc>
+" DONT ESCAPE!!!!
+" inoremap <esc> <nop>
+
+" Map <leader>ev to edit vimrc
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Map <leader>sv to source vimrc (refresh the settings)
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Map <leader>c for easy line commenting
+augroup commenting
+    :autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+    :autocmd FileType python     nnoremap <buffer> <localleader>c I# <esc>
+augroup END
 
 " Fix backspace key for linux
 :set backspace=indent,eol,start
@@ -100,3 +149,15 @@ noremap <space> za
 
 " Map ctrl+d to open git diff
 :map <C-d> :Gdiff<CR>
+
+:map <F1> 1gt
+:map <F2> 2gt
+:map <F3> 3gt
+:map <F4> 4gt
+:map <F5> 5gt
+:map <F6> 6gt
+:map <F7> 7gt
+:map <F8> 8gt
+:map <F9> 9gt
+
+" abbreviations -------------------------------------------------------------|
