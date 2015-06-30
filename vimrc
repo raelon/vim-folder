@@ -16,7 +16,6 @@ Plugin 'tpope/vim-surround'                         " surround
 Plugin 'w0ng/vim-hybrid'                            " vim-hybrid
 Plugin 'kchmck/vim-coffee-script'                   " vim-coffee-script
 Plugin 'digitaltoad/vim-jade'                       " vim-jade
-Plugin 'Valloric/YouCompleteMe'                     " YouCompleteMe
 Plugin 'sgodbold/vim-potion'
 
 call vundle#end()
@@ -44,8 +43,8 @@ colorscheme hybrid                                  " custom color scheme
 set relativenumber                                  " enable relative line numbers
 set number                                          " hybrid mode so current line shows absolute line number
 augroup plugins
-    autocmd BufWritePost * :Suplfil                     " automatic syncr upload on writes
-    autocmd vimenter * if !argc() | NERDTree | endif    " enter NERDTree directory if no file specified
+  autocmd BufWritePost * :Suplfil                     " automatic syncr upload on writes
+  autocmd vimenter * if !argc() | NERDTree | endif    " enter NERDTree directory if no file specified
 augroup END
 
 " Editor Settings -----------------------------------------------------------|
@@ -62,8 +61,6 @@ set incsearch                                       " search incrementally
 set mouse=v                                         " use mouse in visual mode
 set mousehide                                       " hide mouse when typing
 set expandtab                                       " tabs = spaces
-set tabstop=4                                       " number of spaces tabs count for
-set shiftwidth=4                                    " spaces for auto indents
 set smarttab                                        " smart tab handling for indenting
 set smartindent
 set foldmethod=indent                               " fold the same indent level
@@ -76,27 +73,32 @@ let g:syntastic_auto_loc_list = 1                   " syntastic recommended
 let g:syntastic_check_on_open = 1                   " syntastic recommended
 let g:syntastic_check_on_wq = 0                     " syntastic recommended
 
+set tabstop=2                                       " number of spaces tabs count for
+set shiftwidth=2                                    " spaces for auto indents
+autocmd FileType python setlocal tabstop=4          " different tabs for python
+autocmd FileType python setlocal shiftwidth=4       " different tabs for python
+
 function MyTabLine()
- let line = 'Tabs:'
- let i = 1
- while i <= tabpagenr('$')
-     let buflist = tabpagebuflist(i)
-     let winnr = tabpagewinnr(i)
-     let line .= '%' . i . 'T'
-     let line .= (i == tabpagenr() ? '%1*' : '%2*')
-     let line .= (' ' . i . ') %*')
-     let line .= (i == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
-     let file = bufname(buflist[winnr - 1])
-     let file = fnamemodify(file, ':p:t')
-     if file == ''
-         let file = '[No Name]'
-     endif
-     let line .= file
-     let i = i + 1
- endwhile
- let line .= '%T%#TabLineFill#%='
- let line .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
- return line
+  let line = 'Tabs:'
+  let i = 1
+  while i <= tabpagenr('$')
+    let buflist = tabpagebuflist(i)
+    let winnr = tabpagewinnr(i)
+    let line .= '%' . i . 'T'
+    let line .= (i == tabpagenr() ? '%1*' : '%2*')
+    let line .= (' ' . i . ') %*')
+    let line .= (i == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    let file = bufname(buflist[winnr - 1])
+    let file = fnamemodify(file, ':p:t')
+    if file == ''
+      let file = '[No Name]'
+    endif
+    let line .= file
+    let i = i + 1
+  endwhile
+  let line .= '%T%#TabLineFill#%='
+  let line .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+  return line
 endfunction
 set tabline=%!MyTabLine()
 hi TabLine ctermfg=White ctermbg=Black cterm=underline
