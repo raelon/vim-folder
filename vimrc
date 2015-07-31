@@ -11,11 +11,12 @@ Plugin 'tpope/vim-fugitive'                         " fugitive
 Plugin 'scrooloose/nerdtree'                        " nerdtree
 Plugin 'scrooloose/syntastic'                       " syntastic
 " Plugin 'jacob-ogre/vim-syncr'                     " syncr
-Plugin 'mschwager/vim-syncr'                        " less anoying syncr
+" Plugin 'mschwager/vim-syncr'                        " less anoying syncr
 Plugin 'tpope/vim-surround'                         " surround
 Plugin 'w0ng/vim-hybrid'                            " vim-hybrid
 Plugin 'kchmck/vim-coffee-script'                   " vim-coffee-script
 Plugin 'digitaltoad/vim-jade'                       " vim-jade
+Plugin 'https://github.com/fatih/vim-go'            " vim-go
 Plugin 'sgodbold/vim-potion'
 
 call vundle#end()
@@ -43,7 +44,7 @@ colorscheme hybrid                                  " custom color scheme
 set relativenumber                                  " enable relative line numbers
 set number                                          " hybrid mode so current line shows absolute line number
 augroup plugins
-  autocmd BufWritePost * :Suplfil                     " automatic syncr upload on writes
+  " autocmd BufWritePost * :Suplfil                     " automatic syncr upload on writes
   autocmd vimenter * if !argc() | NERDTree | endif    " enter NERDTree directory if no file specified
 augroup END
 
@@ -77,6 +78,8 @@ set tabstop=2                                       " number of spaces tabs coun
 set shiftwidth=2                                    " spaces for auto indents
 autocmd FileType python setlocal tabstop=4          " different tabs for python
 autocmd FileType python setlocal shiftwidth=4       " different tabs for python
+autocmd FileType go setlocal tabstop=8
+autocmd FileType go setlocal shiftwidth=8       " different tabs for python
 
 function MyTabLine()
   let line = 'Tabs:'
