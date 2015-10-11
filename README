@@ -11,12 +11,11 @@ Install:
     -- Install all plugins --
     :PluginInstall (inside of vim)
 
-    -- Install YCM autocomplete (https://github.com/Valloric/YouCompleteMe) --
-    cd ~/.vim/bundle/YouCompleteME
-    ./install.sh (--clang-completer for C languages support)
-
 Requires:
     - vim compiled with python 2
     - git is installed
-    - (optionl) cmake for YCM C lanuage support
     - (optional) silversearcher-ag for speady ctrlp
+    - (optional ctags for easytag generation
+      sudo apt-get install exuberant-ctags
+      or
+      http://ctags.sourceforge.net/
