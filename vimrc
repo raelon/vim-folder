@@ -79,6 +79,8 @@ let g:syntastic_check_on_open = 1                     " syntastic recommended
 let g:syntastic_check_on_wq = 0                       " syntastic recommended
 let g:syntastic_cpp_compiler = 'g++'                  " syntastic c++11 support
 let g:syntastic_cpp_compiler_options = ' -std=c++14'  " syntastic c++11 support
+let g:syntastic_cpp_check_header = 1                  " syntastic cpp .h checking
+let g:easytags_cmd = '~/local/bin/ctags'              " ctags path
 
 " uncomment for syntastic debug mode. Run :mes to view log
 " let g:syntastic_debug = 1
