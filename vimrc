@@ -73,6 +73,7 @@ set foldlevel=99                                      " fold all the way
 set statusline+=%#warningmsg#                         " syntastic recommended
 set statusline+=%{SyntasticStatuslineFlag()}          " syntastic recommended        
 set statusline+=%*                                    " syntastic recommended
+
 let g:syntastic_always_populate_loc_list = 1          " syntastic recommended
 let g:syntastic_auto_loc_list = 1                     " syntastic recommended
 let g:syntastic_check_on_open = 1                     " syntastic recommended
@@ -80,6 +81,7 @@ let g:syntastic_check_on_wq = 0                       " syntastic recommended
 let g:syntastic_cpp_compiler = 'g++'                  " syntastic c++11 support
 let g:syntastic_cpp_compiler_options = ' -std=c++14'  " syntastic c++11 support
 let g:syntastic_cpp_check_header = 1                  " syntastic cpp .h checking
+let g:syntastic_cpp_config_file = '.syntastic_config' " syntastic config file for different projects
 let g:easytags_cmd = '~/local/bin/ctags'              " ctags path
 
 " uncomment for syntastic debug mode. Run :mes to view log
